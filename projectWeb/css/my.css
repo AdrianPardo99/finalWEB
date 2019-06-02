@@ -1,0 +1,22 @@
+.logoISC{
+  width: 30%;
+  height: auto;
+}
+
+.copyright{
+  text-align: center;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background:  url(/projectWeb/img/fondo1.jpg) center top;
+    font-family: sans-serif;
+    height: auto;
+}
+
+.logoEscom{
+  border-radius: 35%;
+  width: 130px;
+  height: auto;
+}
