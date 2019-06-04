@@ -28,25 +28,21 @@
             return false;
         }
         $.ajax({
-                method:"post",
-                url:"LOG.php",
-                data:$("#form").serialize(),
-                cache:false,
-                success:function(resp){
-                        var respAX = JSON.parse(resp);
-                        if (respAX.resultado == 0){
-                          M.toast({html: respAX.mensaje, classes: 'rounded'});
-                        }else if (respAX.resultado == 1){
-                          M.toast({html: respAX.mensaje, classes: 'rounded'});
-                          window.location.replace("../onSession/formulario1.php");
-                        }
-
-
-                }
-
-            });
+          method:"post",
+          url:"LOG.php",
+          data:$("#form").serialize(),
+          cache:false,
+          success:function(resp){
+            var respAX = JSON.parse(resp);
+            if (respAX.resultado == 0){
+              M.toast({html: respAX.mensaje, classes: 'rounded'});
+            }else if (respAX.resultado == 1){
+              M.toast({html: respAX.mensaje, classes: 'rounded'});
+            }
+          }
+        });
+      });
     });
-  });
 </script>
 <div class="row">
   <!--s -> Mobile
@@ -76,18 +72,13 @@
                 <label class="active white-text" for="pass">Password</label>
               </div>
               <div class="col s12 l6 m6">
-                <input type="submit" id="but" style = " font-size:16px; color: 000;" class="btn-flat light-blue darken-2 waves-effect waves-purple white-text" value="Ingrese">
+                <input type="submit" id="but" style="font-size:16px; color: 000;" class="btn-flat light-blue darken-2 waves-effect waves-purple white-text" value="Ingrese">
               </div>
             </div>
           </form>
 
           <form class="col col s12 l12 m12" action="#" method="post">
             <div class="row">
-              <div class="col s12 l6 l6">
-                <span onclick="alert('initResetPassword');">
-                  <a href="#" class="btn-flat light-blue darken-2 waves-effect waves-purple white-text">Olvido su contraseña?</a><br>
-                </span>
-              </div>
               <div class="col s12 l6 l6">
                 <a href="/projectWeb/php/sign.php"
                   class="btn-flat light-blue darken-2 waves-effect waves-purple white-text">No tiene una cuenta?</a>

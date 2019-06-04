@@ -1,4 +1,24 @@
 <?php
+session_start();
+if($_SESSION["ok"] == 1){
+$url = "localhost";
+$usuarioBD = "root";
+$contraBD = "toor";
+$nomBD = "webdb";
+$user = $_SESSION["user"];
+$conexion = mysqli_connect($url,$usuarioBD,$contraBD,$nomBD);
+mysqli_query($conexion,"set names 'utf8'");
+
+$arreglo = array();
+
+if (mysqli_connect_errno($conexion)){
+  $arreglo["resultado"] = 0;
+  $arreglo["mensaje"] = "NO se logro la conexion";
+  header("location:/projectWeb/");
+}else{
+  $sql = "SELECT * FROM usuario WHERE user = '$user' ;";
+  $res = mysqli_query($conexion, $sql);
+  $idproUsr = mysqli_fetch_array($res, MYSQLI_BOTH);
 $varHTML="<!DOCTYPE html>
 <html lang=\"es\" dir=\"ltr\">
   <head>
@@ -39,5 +59,8 @@ include '../querysPDF/PEfile.php';
     $varHTML=$varHTML."</div>
     </body>
     </html>";
-echo file_put_contents("pdfFile.html",$varHTML);
- ?>
+echo file_put_contents($user."pdfFile.html",$varHTML);
+}
+}else{
+  header("location:/projectWeb/php/login.php");
+} ?>

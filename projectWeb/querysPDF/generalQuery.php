@@ -1,10 +1,9 @@
 <?php
-$nombre="Adrian";
-$apeP="Gonzalez";
-$apeM="Pardo";
-$edad="20";
-$fNac="05/10/1999";
-$puesto="Alumno";
+$query="select p.idprofesor,p.APP,p.APM,p.Nombre,p.Edad,p.FechaNA,g.Puesto
+from profesor p, gestion g, usuario u where p.idprofesor=u.idprofesor and
+p.idgestion=g.idgestion and p.idprofesor=".$idproUsr[1].";";
+$res = mysqli_query($conexion, $query);
+$fila = mysqli_fetch_array($res, MYSQLI_BOTH);
 /*Aquí va el query de la consulta del nombre completo*/
 $varHTML=$varHTML."
 <div class=\"col s12 m12 l12\">
@@ -16,9 +15,9 @@ $varHTML=$varHTML."
   </thead>
   <tbody>
     <tr>
-      <td width=\"33%\"><center>".$apeP."</center></td>
-      <td width=\"33%\"><center>".$apeM."</center></td>
-      <td width=\"33%\"><center>".$nombre."</center></td>
+      <td width=\"33%\"><center>".$fila[1]."</center></td>
+      <td width=\"33%\"><center>".$fila[2]."</center></td>
+      <td width=\"33%\"><center>".$fila[3]."</center></td>
     </tr>
   </tbody>
   </table>
@@ -34,9 +33,9 @@ $varHTML=$varHTML."
   </thead>
   <tbody>
     <tr>
-      <td width=\"33%\"><center>".$edad."</center></td>
-      <td width=\"33%\"><center>".$fNac."</center></td>
-      <td width=\"33%\"><center>".$puesto."</center></td>
+      <td width=\"33%\"><center>".$fila[4]."</center></td>
+      <td width=\"33%\"><center>".$fila[5]."</center></td>
+      <td width=\"33%\"><center>".$fila[6]."</center></td>
     </tr>
   </tbody>
   </table>

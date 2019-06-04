@@ -1,8 +1,9 @@
 <?php
-$capType="Curso de uso de herramientas";
-$instiPCap="Instituto Politecnico Nacional ESCOM, México";
-$anioCap="2019";
-$horasCap="20";
+$query="select p.idprofesor, c.tipcap, concat(i.institucion,' ',c.pais),
+c.año, c.horas from capacitacion c, profesor p, institucion i where
+p.idprofesor=c.idprofesor and i.idinstitucion=c.idinstitucion and
+p.idprofesor=".$idproUsr[1].";";
+$res = mysqli_query($conexion, $query);
     /*Aqui va el query de la capacitación docente*/
     $varHTML=$varHTML."
     <div class=\"col s12 m12 l12\">
@@ -14,14 +15,16 @@ $horasCap="20";
         <th width=\"25%\"><center>Año de obtención:</center></th>
         <th width=\"25%\"><center>Horas:</center></th>
       </thead>
-      <tbody>
-        <tr>
-          <td width=\"25%\"><center>".$capType."</center></td>
-          <td width=\"25%\"><center>".$instiPCap."</center></td>
-          <td width=\"25%\"><center>".$anioCap."</center></td>
-          <td width=\"25%\"><center>".$horasCap."</center></td>
-        </tr>
-      </tbody>
+      <tbody>";
+      while($fila=mysqli_fetch_array($res)){
+        $varHTML=$varHTML."<tr>
+          <td width=\"25%\"><center>".$fila[1]."</center></td>
+          <td width=\"25%\"><center>".$fila[2]."</center></td>
+          <td width=\"25%\"><center>".$fila[3]."</center></td>
+          <td width=\"25%\"><center>".$fila[4]."</center></td>
+        </tr>";
+      }
+      $varHTML=$varHTML."</tbody>
       </table>
     </div>
     <br>"; ?>

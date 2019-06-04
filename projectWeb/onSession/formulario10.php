@@ -19,25 +19,24 @@
       </div>
       <div class="card-action">
         <div class="row">
-          <form class="col s12 m12 l12 white-text" action="#" method="post">
+          <form class="col s12 m12 l12 white-text" id="form10">
             <div id="type_container">
               <div class="input-field col s12 l6 m6">
                 <label for="org" class="active white-text">Organismo</label>
-                <input value="" id="org" type="text"
+                <input value="" id="org" name="org" type="text"
                   class="validate white-text" data-length="90">
               </div>
               <div class="input-field col s12 l6 m6">
                 <label for="year" class="active white-text">A&ntilde;os</label  >
-              <input value="" id="year" type="text"
-                  class="validate white-text" data-length="90">
+              <input value="" id="year" name="year" type="text"
+                  class="validate white-text" data-length="4" maxlength="4">
               </div>
               <div class="input-field col s12 l6 m6">
                 <label for="participation" class="active white-text">Nivel de participaci&oacute;n</label>
-                <input value="" id="participation" type="text"
+                <input value="" id="participation" name="participation" type="text"
                   class="validate white-text" data-length="90">
               </div>
               <div class="col s12 l6 m6">
-                <a class="add-type btn-flat light-blue darken-2 waves-effect waves-purple white-text" href="javascript: void(0)" tiitle="Click to add more"><i class="fas fa-plus"></i></a>
               </div>
               <div class="col s12 l12 m12">
                 <p></p>
@@ -74,7 +73,7 @@
           <form class="col s12 l12 m12" action="#" method="post">
             <div class="row">
               <div class="col s12 l6 m6">
-                <span onclick="alert('initSave');"><a id="saveReg" href="#" class="btn-flat light-blue darken-2 waves-effect waves-teal white-text"><i class="far fa-save"></i></a></span>
+                <span onclick="save();"><a id="saveReg" href="#" class="btn-flat light-blue darken-2 waves-effect waves-teal white-text"><i class="far fa-save"></i></a></span>
               </div>
             </div>
           </form>
@@ -114,9 +113,23 @@
             }
         });
     });
-    function initSave(){
-      l=document.getElementById('saveReg');
-      console.log("Saving data");
+    function save(){
+    	$.ajax({
+                method:"post",
+                url:"../sqlQuerys/form10.php",
+                data:$("#form10").serialize(),
+                cache:false,
+                success:function(resp){
+                        var respAX = JSON.parse(resp);
+                        if (respAX.resultado == 0){
+                          M.toast({html: respAX.mensaje, classes: 'rounded'});
+                        }else if (respAX.resultado == 1){
+                          M.toast({html: respAX.mensaje, classes: 'rounded'});
+                            window.location.replace("formularios.php");
+                        }
+                }
+
+            });
     }
     $(document).ready(function() {
         $('input#org , input#year , input#participation').characterCounter();

@@ -1,8 +1,9 @@
 <?php
-$actType="Curso de uso de herramientas para hackiar como los grandes :vvv";
-$instiPAct="Instituto Politecnico Nacional ESCOM, México";
-$anioAct="2019";
-$horasAct="120";
+$query="select p.idprofesor, a.Tactual,concat(i.institucion,' ',a.pais),
+a.ano, a.hora from form7 a, profesor p, institucion i where
+a.idprofesor=p.idprofesor and a.idinstitucion=i.idinstitucion and
+p.idprofesor=".$idproUsr[1].";";
+$res = mysqli_query($conexion, $query);
     /*Aqui va el query de actualización docente*/
     $varHTML=$varHTML."
     <div class=\"col s12 m12 l12\">
@@ -14,14 +15,18 @@ $horasAct="120";
         <th width=\"25%\"><center>Año de obtención:</center></th>
         <th width=\"25%\"><center>Horas:</center></th>
       </thead>
-      <tbody>
-        <tr>
-          <td width=\"25%\"><center>".$actType."</center></td>
-          <td width=\"25%\"><center>".$instiPAct."</center></td>
-          <td width=\"25%\"><center>".$anioAct."</center></td>
-          <td width=\"25%\"><center>".$horasAct."</center></td>
-        </tr>
-      </tbody>
+      <tbody>";
+        while($fila=mysqli_fetch_array($res)){
+          $varHTML=$varHTML."
+          <tr>
+            <td width=\"25%\"><center>".$fila[1]."</center></td>
+            <td width=\"25%\"><center>".$fila[2]."</center></td>
+            <td width=\"25%\"><center>".$fila[3]."</center></td>
+            <td width=\"25%\"><center>".$fila[4]."</center></td>
+          </tr>
+          ";
+        }
+      $varHTML=$varHTML."</tbody>
       </table>
     </div>
     <br>"; ?>

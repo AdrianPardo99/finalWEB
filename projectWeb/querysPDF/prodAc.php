@@ -1,6 +1,9 @@
 <?php
-$prodNum="1";
-$prodDes="Tachas y perico pa la bandita";
+$query="select p.idprofesor, f.descrip from
+profesor p, form8 f where f.idprofesor=p.idprofesor and
+p.idprofesor=".$idproUsr[1].";";
+$con=1;
+$res = mysqli_query($conexion, $query);
     /*Aqui va el query de productos academicos*/
     $varHTML=$varHTML."
     <div class=\"col s12 m12 l12\">
@@ -10,12 +13,14 @@ $prodDes="Tachas y perico pa la bandita";
         <th width=\"25%\"><center>Num:</center></th>
         <th width=\"75%\"><center>Descripción del producto:</center></th>
       </thead>
-      <tbody>
-        <tr>
-          <td width=\"25%\"><center>".$prodNum."</center></td>
-          <td width=\"75%\"><center>".$prodDes."</center></td>
-        </tr>
-      </tbody>
+      <tbody>";
+      while($fila=mysqli_fetch_array($res)){
+        $varHTML=$varHTML."<tr>
+          <td width=\"25%\"><center>".$con++."</center></td>
+          <td width=\"75%\"><center>".$fila[1]."</center></td>
+        </tr>";
+      }
+      $varHTML=$varHTML."</tbody>
       </table>
     </div>
     <br>";

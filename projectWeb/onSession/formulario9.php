@@ -19,25 +19,24 @@
       </div>
       <div class="card-action">
         <div class="row">
-          <form class="col s12 m12 l12 white-text" action="#" method="post">
+          <form class="col s12 m12 l12 white-text" id="form9">
             <div id="type_container">
               <div class="input-field col s12 l6 m6">
                 <label for="org" class="active white-text">Organismo</label>
-                <input value="" id="org" type="text"
+                <input value="" id="org" name="org" type="text"
                   class="validate white-text" data-length="90" maxlength="90" required>
               </div>
               <div class="input-field col s12 l6 m6">
-                <label for="year" class="active white-text">A&ntilde;o</label  >
-              <input value="" id="year" type="text"
+                <label for="year" class="active white-text">A&ntilde;os</label  >
+              <input value="" id="year" name="year" type="text"
                   class="validate white-text" data-length="90" maxlength="90" required>
               </div>
               <div class="input-field col s12 l6 m6">
                 <label for="experience" class="active white-text">Nivel de experiencia</label>
-                <input value="" id="experience" type="text"
+                <input value="" id="experience" name="experience" type="text"
                   class="validate white-text" data-length="90" maxlength="90" required>
               </div>
               <div class="col s12 l6 m6">
-                <a class="add-type btn-flat light-blue darken-2 waves-effect waves-purple white-text" href="javascript: void(0)" tiitle="Click to add more"><i class="fas fa-plus"></i></a>
               </div>
               <div class="col s12 l12 m12">
                 <p></p>
@@ -99,6 +98,25 @@
             M.toast({html: 'Cadenas demasiado grandes', classes: 'rounded'});
             return false;
         }
+
+
+		$.ajax({
+                method:"post",
+                url:"../sqlQuerys/form9.php",
+                data:$("#form9").serialize(),
+                cache:false,
+                success:function(resp){
+                        var respAX = JSON.parse(resp);
+                        if (respAX.resultado == 0){
+                          M.toast({html: respAX.mensaje, classes: 'rounded'});
+                        }else if (respAX.resultado == 1){
+                          M.toast({html: respAX.mensaje, classes: 'rounded'});
+                            window.location.replace("formularios.php");
+                        }
+                }
+
+            });
+
     }
     jQuery(document).ready(function () {
       console.log("Aqui")

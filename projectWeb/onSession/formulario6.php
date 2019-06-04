@@ -19,34 +19,34 @@
       </div>
       <div style="border-radius: 20px;" class="card-action">
         <div class="row">
-          <form class="col s12 l12 m12 white-text" action="" method="post">
+          <form class="col s12 l12 m12 white-text" id="form6">
             <div class="input-field col s12 l6 m6">
               <label class="active white-text">Nivel</label>
 
-              <select style="border: none; border-bottom: 1px solid #fff;  background: black; "  class="browser-default white-text" name="especilidad" id="nespecilidad" required>
+              <select style="border: none; border-bottom: 1px solid #fff;  background: black; "  class="browser-default white-text" name="nespecilidad" id="nespecilidad" required>
                 <?php
                     $especial = array( 0 => "Licenciatura" ,
-                    1 =>  "Especilidad",2 =>  "Maestría" , 3 => "Doctorado",
+                    1 =>  "Especialidad",2 =>  "Maestria" , 3 => "Doctorado",
                     4 => "Otro");
                     for ($i=0; $i!=5; $i++){
-                      echo "<option style=\"color:white;\" value=\"$i\">".$especial[$i]."</option>";
+                      echo "<option style=\"color:white;\" value=\"$especial[$i]\">".$especial[$i]."</option>";
                     }
                  ?>
               </select>
 
             </div>
             <div class="input-field col s12 l6 m6">
-              <input value="" id="espe" type="text"
+              <input value="" id="espe" name="espe" type="text"
                   class="validate white-text" data-length="90" maxlength="90" required>
               <label class="active white-text" for="espe">Especilidad</label>
             </div>
             <div class="input-field col s12 l6 m6">
-              <input value="" id="instituReg" type="text"
+              <input value="" id="instituReg" name="instituReg" type="text"
                   class="validate white-text" data-length="20" maxlength="20" required>
               <label class="active white-text" for="ins">Instituci&oacute;n</label>
             </div>
             <div class="input-field col s12 l6 m6">
-              <input value="" id="state" type="text"
+              <input value="" id="state" name="state" type="text"
                   class="validate white-text" data-length="20" maxlength="20" required>
               <label class="active white-text" for="state">Pa&iacute;s</label>
             </div>
@@ -61,7 +61,7 @@
               </select>
             </div>
             <div class="input-field col s12 l6 m6">
-              <input value="" id="cedula" type="text"
+              <input value="" id="cedula" name="cedula" type="text"
                   class="validate white-text" data-length="20" maxlength="20" required>
               <label class="active white-text" for="cedula">C&eacute;dula profesional</label>
             </div>
@@ -102,6 +102,24 @@
             M.toast({html: 'Formato equivocado', classes: 'rounded'});
             return false;
         }
+
+		$.ajax({
+                method:"post",
+                url:"../sqlQuerys/form6.php",
+                data:$("#form6").serialize(),
+                cache:false,
+                success:function(resp){
+                        var respAX = JSON.parse(resp);
+                        if (respAX.resultado == 0){
+                          M.toast({html: respAX.mensaje, classes: 'rounded'});
+                        }else if (respAX.resultado == 1){
+                          M.toast({html: respAX.mensaje, classes: 'rounded'});
+                            window.location.replace("formularios.php");
+                        }
+                }
+
+            });
+
     }
 $(document).ready(function() {
     $('input#espe , input#instituReg , input#state').characterCounter();

@@ -108,6 +108,7 @@
         var Textos = /[A-Za-zÁÉÍÓÚñáéíóúÑ\']+/;
         var patron = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,20}$/;
         var correo = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+[@]+[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+		var email =/^[a-zA-Z0-9\._-]+@[a-zA-Z0-9-]{2,}[.][a-zA-Z]{2,4}$/;
 
         if (email == ""||user == ""||Nom == "" || app == "" || apm == "" || fecha == "" || puesto == "" || age == ""||pass1 == ""||pass2 == ""){
             M.toast({html: 'Todos los campos deben estar llenos', classes: 'rounded'});
@@ -133,7 +134,7 @@
           M.toast({html: 'Las contraseñas no son iguales', classes: 'rounded'});
             return false;
         }
-        if (correo.test(email)){
+        if (!correo.test(email)){
             M.toast({html: 'El correo tiene un formato equivocado', classes: 'rounded'});
             return false;
         }

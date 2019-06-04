@@ -19,19 +19,17 @@
         $sql = "SELECT*FROM usuario WHERE user='$user' AND pass = '$crypt';";
         $res = mysqli_query($conexion, $sql);
         $numFilas = mysqli_num_rows($res);
-
-
+        $fila = mysqli_fetch_array($res, MYSQLI_BOTH);
         if($numFilas == 0){
-            $arreglo["resultado"] = 0;
-            $arreglo["mensaje"] = "No estas registrado";
+            $arreglo["resultado"]=0;
+            $arreglo["mensaje"]="No estas registrado";
         }else{
-            $arreglo["resultado"] = $numFilas;
-            $arreglo["mensaje"] = "Bienvenido";
-            $_SESSION["ok"] = 1;
+            $arreglo["resultado"]=$numFilas;
+            $arreglo["mensaje"]="Bienvenido";
+            $_SESSION["ok"]=1;
+            $_SESSION["user"]=$user;
+            header("location:/projectWeb/onSession/");
         }
-
-        $respAx = json_encode($arreglo);
-        echo $respAx;
     }
 
 ?>

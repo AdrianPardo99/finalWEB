@@ -22,9 +22,9 @@
       </div>
       <div style="border-radius: 20px;" class="card-action">
         <div class="row">
-          <form class="col s12 m12 l12 white-text" action="" method="post">
+          <form class="col s12 m12 l12 white-text" id="form5">
             <div class="input-field col s12 l12 m12">
-                <textarea id="Logros" class="materialize-textarea white-text" data-length="400" maxlength="400" required></textarea>
+                <textarea id="Logros" name="Logros" class="materialize-textarea white-text" data-length="600" maxlength="600" required></textarea>
               <label for="Logros" class="white-text">Premios y/o reconocimientos recibidos </label>
             </div>
           </form>
@@ -34,7 +34,6 @@
                 <span onclick="valid();"><a id="saveReg" href="#" class="btn-flat light-blue darken-2 waves-effect waves-teal white-text"><i class="far fa-save"></i></a></span>
               </div>
               <div class="col s12 l6 l6">
-                <a id="Next" href="#" class="btn-flat light-blue darken-2 waves-effect waves-teal white-text"><i class="fas fa-arrow-right"></i></a><br>
               </div>
             </div>
           </form>
@@ -52,10 +51,28 @@
             M.toast({html: 'Todos los campos deben estar llenos', classes: 'rounded'});
             return false;
         }
-        if (logr.length >400 ){
+        if (logr.length >600 ){
             M.toast({html: 'Cadenas demasiado grandes', classes: 'rounded'});
             return false;
         }
+
+         $.ajax({
+                method:"post",
+                url:"../sqlQuerys/form5.php",
+                data:$("#form5").serialize(),
+                cache:false,
+                success:function(resp){
+                        var respAX = JSON.parse(resp);
+                        if (respAX.resultado == 0){
+                          M.toast({html: respAX.mensaje, classes: 'rounded'});
+                        }else if (respAX.resultado == 1){
+                          M.toast({html: respAX.mensaje, classes: 'rounded'});
+                            window.location.replace("formularios.php");
+                        }
+                }
+
+            });
+
     }
     $(document).ready(function() {
         $('textarea#Logros').characterCounter();

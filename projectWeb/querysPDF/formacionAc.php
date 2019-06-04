@@ -1,9 +1,11 @@
 <?php
-$nivelAc="L";
-$nombreEs="Ingenieria en sistemas computacionales";
-$InstiPAc="Instituto Politecnico Nacional, México";
-$anioAc="2022";
-$cedula="000000";
+$query="select p.idprofesor,substring(l.nivel,1,1),e.especialidad,
+concat(i.institucion,' ',f.pais),f.ano, f.cedula from
+form6 f, institucion i,especialidad e, lvledu l, profesor p
+where p.idprofesor=f.idprofesor and l.ideducativo=f.ideducativo and
+i.idinstitucion=f.idinstitucion and e.idespecialidad=f.idespecialidad and
+p.idprofesor=".$idproUsr[1].";";
+$res = mysqli_query($conexion, $query);
 
     /*Aquí va el query de la formación academica*/
     $varHTML=$varHTML."
@@ -17,14 +19,16 @@ $cedula="000000";
         <th width=\"20%\"><center>Año de obtención:</center></th>
         <th width=\"20%\"><center>Cedula profesiona:</center></th>
       </thead>
-      <tbody>
-        <tr>
-          <td width=\"20%\"><center>".$nivelAc."</center></td>
-          <td width=\"20%\"><center>".$nombreEs."</center></td>
-          <td width=\"20%\"><center>".$InstiPAc."</center></td>
-          <td width=\"20%\"><center>".$anioAc."</center></td>
-          <td width=\"20%\"><center>".$cedula."</center></td>
-        </tr>
+      <tbody>";
+        while($fila = mysqli_fetch_array($res)){
+          $varHTML=$varHTML."<tr>
+          <td width=\"20%\"><center>".$fila[1]."</center></td>
+          <td width=\"20%\"><center>".$fila[2]."</center></td>
+          <td width=\"20%\"><center>".$fila[3]."</center></td>
+          <td width=\"20%\"><center>".$fila[4]."</center></td>
+          <td width=\"20%\"><center>".$fila[5]."</center></td></tr>";
+        }
+        $varHTML=$varHTML."</tr>
       </tbody>
       </table>
     </div>

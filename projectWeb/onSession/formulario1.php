@@ -19,20 +19,20 @@
       </div>
       <div style="border-radius: 20px;" class="card-action">
         <div class="row">
-          <form class="col s12 l12 m12 white-text" action="#" method="post">
+          <form class="col s12 l12 m12 white-text" id="forsig">
             <div class="row">
               <div class="input-field col s12 l6 m6">
-                <input value="" id="typeCap" type="text"
+                <input value="" id="typeCap" name="typeCap" type="text"
                     class="validate white-text" data-length="90" maxlength="90" required placeholder="Tipo de Capacitaci&oacute;n :">
                 <label class="active white-text" for="cap">Tipo de Capacitaci&oacute;n</label>
               </div>
               <div class="input-field col s12 l6 m6">
-                <input value="" id="instituReg" type="text"
+                <input value="" id="instituReg" name="instituReg" type="text"
                     class="validate white-text" data-length="20" maxlength="20" required placeholder="Instituci&oacute;n :">
                 <label class="active white-text" for="ins">Instituci&oacute;n</label>
               </div>
               <div class="input-field col s12 l6 m6">
-                <input value="" id="state" type="text"
+                <input value="" id="state" name="state" type="text"
                     class="validate white-text" data-length="20" maxlength="20" required placeholder="Pa&iacute;s :">
                 <label class="active white-text" for="state">Pa&iacute;s</label>
               </div>
@@ -61,13 +61,12 @@
               </div>
             </div>
           </form>
-          <form class="col col s12 l12 m12" action="#" method="post">
+          <form class="col col s12 l12 m12" >
             <div class="row">
               <div class="col s12 l6 m6">
                 <span onclick="valid();"><a id="saveReg" href="#" class="btn-flat light-blue darken-2 waves-effect waves-teal white-text"><i class="far fa-save"></i></a></span>
               </div>
               <div class="col s12 l6 l6">
-                <a id="addAnotherReg" href="#" class="btn-flat light-blue darken-2 waves-effect waves-teal white-text">Agregrar otro</a><br>
               </div>
             </div>
           </form>
@@ -76,6 +75,7 @@
     </div>
   </div>
 </div>
+
 <script>
     function valid(){
         var cap = $("#typeCap").val();
@@ -99,11 +99,43 @@
             M.toast({html: 'No deben incluir numeros', classes: 'rounded'});
             return false;
         }
+
+        $.ajax({
+                method:"post",
+                url:"../sqlQuerys/form1.php",
+                data:$("#forsig").serialize(),
+                cache:false,
+                success:function(resp){
+                        var respAX = JSON.parse(resp);
+                        if (respAX.resultado == 0){
+                          M.toast({html: respAX.mensaje, classes: 'rounded'});
+                        }else if (respAX.resultado == 1){
+                          M.toast({html: respAX.mensaje, classes: 'rounded'});
+                           window.location.replace("formularios.php");
+                        }
+                }
+
+            });
     }
 $(document).ready(function() {
     $('input#typeCap , input#instituReg , input#state').characterCounter();
+    $('select').formSelect();
+
+    $('.datepicker').datepicker({
+                   format: 'yyyy/mm/dd',
+                   minDate: new Date(1930,12,1),
+                   maxDate: new Date(2090,11,31),
+                    i18n:{
+                        months: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+                        monthsShort: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
+                        weekdays: ['Domingo','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado'],
+                        weekdaysShort:['Dom','Lun','Mar','Mier','Jue','Vie','Sab'],
+                        weekdaysAbbrev:['D','L','M','M','J','V','S'],
+                    }
+                });
   });
 </script>
+
 <?php include '../php/footerSession.php';
         }else{
         header("location:../php/login.php");

@@ -19,14 +19,13 @@
       </div>
       <div style="border-radius: 20px;" class="card-action">
         <div class="row">
-          <form class="col s12 m12 l12 white-text" action="#" method="post">
+          <form class="col s12 m12 l12 white-text" id="form8">
             <div id="type_container">
               <div class="input-field col s12 l12 m12">
-                <textarea id="desc" class="materialize-textarea white-text" data-length="200" maxlength="200" required></textarea>
+                <textarea id="desc"  name="desc" class="materialize-textarea white-text" data-length="600" maxlength="600" required></textarea>
                 <label for="desc" class="white-text">Descripci&oacute;n del producto acad&eacute;mico</label>
               </div>
               <div class="col s12 l12 m12">
-                <a class="add-type btn-flat light-blue darken-2 waves-effect waves-purple white-text" href="javascript: void(0)" tiitle="Click to add more"><i class="fas fa-plus"></i></a>
               </div>
             </div>
           </form>
@@ -34,7 +33,7 @@
             <div id="type-container" class="hide">
               <div class="type-row" id="">
                 <div class="input-field col s12 l12 m12">
-                  <textarea id="desc" class="materialize-textarea white-text" data-length="200"  maxlength="200" required></textarea>
+                  <textarea id="desc" class="materialize-textarea white-text" data-length="600"  maxlength="600" required></textarea>
                   <label for="desc" class="white-text">Descripci&oacute;n del producto acad&eacute;mico</label>
                 </div>
                 <div class="col s12 l12 m12">
@@ -49,7 +48,7 @@
           <form class="col s12 l12 m12" action="#" method="post">
             <div class="row">
               <div class="col s12 l6 m6">
-                <span onclick="alert('initSave');"><a id="saveReg" href="#" class="btn-flat light-blue darken-2 waves-effect waves-teal white-text"><i class="far fa-save"></i></a></span>
+                <span onclick="save();"><a id="saveReg" href="#" class="btn-flat light-blue darken-2 waves-effect waves-teal white-text"><i class="far fa-save"></i></a></span>
               </div>
             </div>
           </form>
@@ -92,6 +91,24 @@
     $(document).ready(function() {
         $('textarea#desc').characterCounter();
       });
+	function save(){
+		$.ajax({
+                method:"post",
+                url:"../sqlQuerys/form8.php",
+                data:$("#form8").serialize(),
+                cache:false,
+                success:function(resp){
+                        var respAX = JSON.parse(resp);
+                        if (respAX.resultado == 0){
+                          M.toast({html: respAX.mensaje, classes: 'rounded'});
+                        }else if (respAX.resultado == 1){
+                          M.toast({html: respAX.mensaje, classes: 'rounded'});
+                            window.location.replace("formularios.php");
+                        }
+                }
+
+            });
+	}
 </script>
 <?php include '../php/footerSession.php';
         }else{

@@ -1,8 +1,9 @@
 <?php
-$expNoAc="Dar levantones a la bandita por andar terroreando la demas banda";
-$orgNoAc="El barrio";
-$deNoAc="01/01/2017";
-$aNoAc="01/06/2019";
+$query="select p.idprofesor, g.puesto, o.organizacion, f.fechade, f.fechaA
+from profesor p, form3 f, gestion g, organizacion o where
+p.idprofesor=f.idprofesor and g.idgestion=f.idgestion and o.idorga=f.idorga and
+p.idprofesor=".$idproUsr[1].";";
+$res = mysqli_query($conexion, $query);
     /*Aqui va el query de experiencia no Academica*/
     $varHTML=$varHTML."
     <div class=\"col s12 m12 l12\">
@@ -14,14 +15,16 @@ $aNoAc="01/06/2019";
         <th width=\"25%\"><center>De:</center></th>
         <th width=\"25%\"><center>A:</center></th>
       </thead>
-      <tbody>
-        <tr>
-          <td width=\"25%\"><center>".$expNoAc."</center></td>
-          <td width=\"25%\"><center>".$orgNoAc."</center></td>
-          <td width=\"25%\"><center>".$deNoAc."</center></td>
-          <td width=\"25%\"><center>".$aNoAc."</center></td>
-        </tr>
-      </tbody>
+      <tbody>";
+      while($fila=mysqli_fetch_array($res)){
+        $varHTML=$varHTML."<tr>
+          <td width=\"25%\"><center>".$fila[1]."</center></td>
+          <td width=\"25%\"><center>".$fila[2]."</center></td>
+          <td width=\"25%\"><center>".$fila[3]."</center></td>
+          <td width=\"25%\"><center>".$fila[4]."</center></td>
+        </tr>";
+      }
+      $varHTML=$varHTML."</tbody>
       </table>
     </div>
     <br>"; ?>

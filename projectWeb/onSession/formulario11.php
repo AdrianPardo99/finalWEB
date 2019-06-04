@@ -19,9 +19,9 @@
       </div>
       <div style="border-radius: 20px;" class="card-action">
         <div class="row">
-          <form class="col s12 m12 l12 white-text" action="" method="post">
+          <form class="col s12 m12 l12 white-text" id="form11">
             <div class="input-field col s12 l12 m12">
-                <textarea id="participatePE" class="materialize-textarea white-text" data-length="200" maxlength="200" required></textarea>
+                <textarea id="participatePE" name="participatePE" class="materialize-textarea white-text" data-length="200" maxlength="200" required></textarea>
               <label for="participatePE" class="white-text">Con un m&aacute;ximo de 200 palabras, rese&ntilde;e cu&aacute;l ha sido su participaci&oacute;n en actividades relevantes del PE</label>
             </div>
           </form>
@@ -44,10 +44,28 @@
             M.toast({html: 'Todos los campos deben estar llenos', classes: 'rounded'});
             return false;
         }
-        if (logr.length >400 ){
+        if (logr.length >200 ){
             M.toast({html: 'Cadenas demasiado grandes', classes: 'rounded'});
             return false;
         }
+		
+		$.ajax({
+                method:"post",
+                url:"../sqlQuerys/form11.php",
+                data:$("#form11").serialize(),
+                cache:false,
+                success:function(resp){
+                        var respAX = JSON.parse(resp);
+                        if (respAX.resultado == 0){
+                          M.toast({html: respAX.mensaje, classes: 'rounded'});
+                        }else if (respAX.resultado == 1){
+                          M.toast({html: respAX.mensaje, classes: 'rounded'});
+                            window.location.replace("formularios.php");
+                        }
+                }
+
+            });
+		
     }
     $(document).ready(function() {
         $('textarea#participatePE').characterCounter();

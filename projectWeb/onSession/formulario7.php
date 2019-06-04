@@ -19,24 +19,24 @@
       </div>
       <div style="border-radius: 20px;" class="card-action">
           <div class="row">
-            <form class="col s12 m12 l12 white-text" action="#" method="post">
+            <form class="col s12 m12 l12 white-text" id="form7">
             <div class="input-field col s12 l6 m6">
 
-              <input value="" id="tipeAct" type="text"
+              <input value="" id="tipeAct" name="tipeAct" type="text"
                   class="validate white-text" data-length="90" maxlength="90" required>
               <label class="active white-text" for="tipeAct">Tipo de Actualizaci&oacute;n</label>
 
             </div>
             <div class="input-field col s12 l6 m6">
 
-              <input value="" id="instituReg" type="text"
+              <input value="" id="instituReg" name="instituReg" type="text"
                   class="validate white-text" data-length="20" maxlength="20" required>
               <label class="active white-text" for="ins">Instituci&oacute;n</label>
 
             </div>
             <div class="input-field col s12 l6 m6">
 
-              <input value="" id="state" type="text"
+              <input value="" id="state" name="state" type="text"
                   class="validate white-text" data-length="20" maxlength="20" required>
               <label class="active white-text" for="state">Pa&iacute;s</label>
 
@@ -69,13 +69,12 @@
 
             </div>
           </form>
-          <form class="col col s12 l12 m12" action="#" method="post">
+          <form class="col col s12 l12 m12" >
             <div class="row">
               <div class="col s6 l6 m6">
                 <span onclick="valid();"><a id="saveReg" href="#" class="btn-flat light-blue darken-2 waves-effect waves-teal white-text"><i class="far fa-save"></i></a></span>
               </div>
               <div class="col s6 l6 l6">
-                <a id="Next" href="#" class="btn-flat light-blue darken-2 waves-effect waves-teal white-text"><i class="fas fa-arrow-right"></i></a><br>
               </div>
             </div>
           </form>
@@ -91,7 +90,6 @@
         var pais = $("#state").val();
         var ano = $("#year").val();
         var horas = $("#hours").val();
-
         var Textos = /[A-Za-zÁÉÍÓÚñáéíóúÑ\']+/;
 
         if (tact == "" || ins == "" || pais == "" || ano == "" || horas == "" ){
@@ -102,12 +100,30 @@
             M.toast({html: 'Cadenas demasiado grandes', classes: 'rounded'});
             return false;
         }
-        if (!Textos.test(esp) || !Textos.test(ins) || !Textos.test(pais)) {
+		if (!Textos.test(tact) || !Textos.test(ins) || !Textos.test(pais) ) {
             M.toast({html: 'Formato equivocado', classes: 'rounded'});
             return false;
         }
-      l=document.getElementById('saveReg');
-      console.log("Saving data");
+
+
+		$.ajax({
+                method:"post",
+                url:"../sqlQuerys/form7.php",
+                data:$("#form7").serialize(),
+                cache:false,
+                success:function(resp){
+                        var respAX = JSON.parse(resp);
+                        if (respAX.resultado == 0){
+                          M.toast({html: respAX.mensaje, classes: 'rounded'});
+                        }else if (respAX.resultado == 1){
+                          M.toast({html: respAX.mensaje, classes: 'rounded'});
+                            window.location.replace("formularios.php");
+                        }
+                }
+
+            });
+
+
     }
     $(document).ready(function() {
         $('input#tipeAct , input#instituReg , input#state').characterCounter();

@@ -1,5 +1,5 @@
 <ul id="dropdown1" class="dropdown-content">
-  <li><a href="/projectWeb/onSession/">Home</a></li>
+  <li><a href="/projectWeb/onSession/formularios.php">Home</a></li>
   <li class="divider"></li>
   <li><a href="/projectWeb/onSession/formulario6.php">Formaci&oacute;n</a></li>
   <li class="divider"></li>
