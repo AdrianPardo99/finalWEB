@@ -62,7 +62,7 @@
             </div>
             <div class="input-field col s12 l6 m6">
               <input value="" id="cedula" name="cedula" type="text"
-                  class="validate white-text" data-length="20" maxlength="20" required>
+                  class="validate white-text" data-length="8" maxlength="8" required>
               <label class="active white-text" for="cedula">C&eacute;dula profesional</label>
             </div>
           </form>

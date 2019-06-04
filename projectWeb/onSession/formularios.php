@@ -37,7 +37,9 @@ if($_SESSION["ok"] == 1){
           <center> <span class="card-title">Formaci&oacute;n</span> </center>
         </div>
         <div class="card-action">
-          <center>  <a id="toFormacion" href="/projectWeb/onSession/formulario6.php" class="btn-flat light-blue darken-2 waves-effect waves-teal white-text"><i class="fas fa-door-open"></i></a></center>
+          <center><a id="toFormacion" href="/projectWeb/onSession/formulario6.php" class="btn-flat light-blue darken-2 waves-effect waves-teal white-text"><i class="fas fa-door-open"></i></a></center>
+          <br>
+          <center><a id="deletelastFormacion" href="/projectWeb/dlQuerys/dform6.php" class="btn-flat light-blue darken-2 waves-effect waves-teal white-text">Borrar ultimo dato <i class="fa fa-trash"></i></a></center>
         </div>
       </div>
       <br>
@@ -47,6 +49,8 @@ if($_SESSION["ok"] == 1){
         </div>
         <div class="card-action">
           <center>  <a id="toFormacion" href="/projectWeb/onSession/formulario1.php" class="btn-flat light-blue darken-2 waves-effect waves-teal white-text"><i class="fas fa-door-open"></i></a></center>
+          <br>
+          <center><a id="deletelastFormacion" href="/projectWeb/dlQuerys/dform1.php" class="btn-flat light-blue darken-2 waves-effect waves-teal white-text">Borrar ultimo dato <i class="fa fa-trash"></i></a></center>
         </div>
       </div>
       <br>
@@ -56,6 +60,8 @@ if($_SESSION["ok"] == 1){
         </div>
         <div class="card-action">
           <center>  <a id="toFormacion" href="/projectWeb/onSession/formulario7.php" class="btn-flat light-blue darken-2 waves-effect waves-teal white-text"><i class="fas fa-door-open"></i></a></center>
+          <br>
+          <center><a id="deletelastFormacion" href="/projectWeb/dlQuerys/dform7.php" class="btn-flat light-blue darken-2 waves-effect waves-teal white-text">Borrar ultimo dato <i class="fa fa-trash"></i></a></center>
         </div>
       </div>
       <br>
@@ -65,6 +71,8 @@ if($_SESSION["ok"] == 1){
         </div>
         <div class="card-action">
           <center>  <a id="toFormacion" href="/projectWeb/onSession/formulario2.php" class="btn-flat light-blue darken-2 waves-effect waves-teal white-text"><i class="fas fa-door-open"></i></a></center>
+          <br>
+          <center><a id="deletelastFormacion" href="/projectWeb/dlQuerys/dform2.php" class="btn-flat light-blue darken-2 waves-effect waves-teal white-text">Borrar ultimo dato <i class="fa fa-trash"></i></a></center>
         </div>
       </div>
       <br>
@@ -74,6 +82,8 @@ if($_SESSION["ok"] == 1){
         </div>
         <div class="card-action">
           <center>  <a id="toFormacion" href="/projectWeb/onSession/formulario8.php" class="btn-flat light-blue darken-2 waves-effect waves-teal white-text"><i class="fas fa-door-open"></i></a></center>
+          <br>
+          <center><a id="deletelastFormacion" href="/projectWeb/dlQuerys/dform8.php" class="btn-flat light-blue darken-2 waves-effect waves-teal white-text">Borrar ultimo dato <i class="fa fa-trash"></i></a></center>
         </div>
       </div>
       <br>
@@ -83,15 +93,19 @@ if($_SESSION["ok"] == 1){
         </div>
         <div class="card-action">
           <center>  <a id="toFormacion" href="/projectWeb/onSession/formulario3.php" class="btn-flat light-blue darken-2 waves-effect waves-teal white-text"><i class="fas fa-door-open"></i></a></center>
+          <br>
+          <center><a id="deletelastFormacion" href="/projectWeb/dlQuerys/dform3.php" class="btn-flat light-blue darken-2 waves-effect waves-teal white-text">Borrar ultimo dato <i class="fa fa-trash"></i></a></center>
         </div>
       </div>
       <br>
       <div class="card black darken-1">
         <div class="card-content white-text">
-          <center> <span class="card-title">Experiencia ingenieril</span> </center>
+          <center> <span class="card-title">Experiencia en diseño ingenieril</span> </center>
         </div>
         <div class="card-action">
           <center>  <a id="toFormacion" href="/projectWeb/onSession/formulario9.php" class="btn-flat light-blue darken-2 waves-effect waves-teal white-text"><i class="fas fa-door-open"></i></a></center>
+          <br>
+          <center><a id="deletelastFormacion" href="/projectWeb/dlQuerys/dform9.php" class="btn-flat light-blue darken-2 waves-effect waves-teal white-text">Borrar ultimo dato <i class="fa fa-trash"></i></a></center>
         </div>
       </div>
       <br>
@@ -101,6 +115,8 @@ if($_SESSION["ok"] == 1){
         </div>
         <div class="card-action">
           <center>  <a id="toFormacion" href="/projectWeb/onSession/formulario4.php" class="btn-flat light-blue darken-2 waves-effect waves-teal white-text"><i class="fas fa-door-open"></i></a></center>
+          <br>
+          <center><a id="deletelastFormacion" href="/projectWeb/dlQuerys/dform4.php" class="btn-flat light-blue darken-2 waves-effect waves-teal white-text">Borrar ultimo dato <i class="fa fa-trash"></i></a></center>
         </div>
       </div>
       <br>
@@ -110,6 +126,8 @@ if($_SESSION["ok"] == 1){
         </div>
         <div class="card-action">
           <center>  <a id="toFormacion" href="/projectWeb/onSession/formulario10.php" class="btn-flat light-blue darken-2 waves-effect waves-teal white-text"><i class="fas fa-door-open"></i></a></center>
+          <br>
+          <center><a id="deletelastFormacion" href="/projectWeb/dlQuerys/dform10.php" class="btn-flat light-blue darken-2 waves-effect waves-teal white-text">Borrar ultimo dato <i class="fa fa-trash"></i></a></center>
         </div>
       </div>
       <br>
@@ -119,6 +137,8 @@ if($_SESSION["ok"] == 1){
         </div>
         <div class="card-action">
           <center>  <a id="toFormacion" href="/projectWeb/onSession/formulario5.php" class="btn-flat light-blue darken-2 waves-effect waves-teal white-text"><i class="fas fa-door-open"></i></a></center>
+          <br>
+          <center><a id="deletelastFormacion" href="/projectWeb/dlQuerys/dform5.php" class="btn-flat light-blue darken-2 waves-effect waves-teal white-text">Borrar ultimo dato <i class="fa fa-trash"></i></a></center>
         </div>
       </div>
       <br>
@@ -128,6 +148,8 @@ if($_SESSION["ok"] == 1){
         </div>
         <div class="card-action">
           <center>  <a id="toFormacion" href="/projectWeb/onSession/formulario11.php" class="btn-flat light-blue darken-2 waves-effect waves-teal white-text"><i class="fas fa-door-open"></i></a></center>
+          <br>
+          <center><a id="deletelastFormacion" href="/projectWeb/dlQuerys/dform11.php" class="btn-flat light-blue darken-2 waves-effect waves-teal white-text">Borrar ultimo dato <i class="fa fa-trash"></i></a></center>
         </div>
       </div>
       <br>
