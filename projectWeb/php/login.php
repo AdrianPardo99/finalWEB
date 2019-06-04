@@ -38,6 +38,7 @@
               M.toast({html: respAX.mensaje, classes: 'rounded'});
             }else if (respAX.resultado == 1){
               M.toast({html: respAX.mensaje, classes: 'rounded'});
+              window.location.replace("/projectWeb/onSession/");
             }
           }
         });

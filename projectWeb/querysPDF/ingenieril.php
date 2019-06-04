@@ -10,11 +10,16 @@ $res = mysqli_query($conexion, $query);
     <p>Experiencia en diseño ingenieril: </p>
     <table border=\"1\" width=\"100%\" class=\"col s12 m12 l12\">
       <thead>
-        <th width=\"33%\"><center>Organismo:</center></th>
-        <th width=\"33%\"><center>Periodo Años:</center></th>
-        <th width=\"33%\"><center>Nivel de experiencia:</center></th>
+        <th width=\"33%\"><center></center></th>
+        <th width=\"33%\"><center></center></th>
+        <th width=\"33%\"><center></center></th>
       </thead>
-      <tbody>";
+      <tbody>
+          <tr>
+            <th width=\"33%\"><center>Organismo:</center></th>
+            <th width=\"33%\"><center>Periodo Años:</center></th>
+            <th width=\"33%\"><center>Nivel de experiencia:</center></th>
+          </tr>";
       while($fila=mysqli_fetch_array($res)){
         $varHTML=$varHTML."<tr>
           <td width=\"33%\"><center>".$fila[1]."</center></td>

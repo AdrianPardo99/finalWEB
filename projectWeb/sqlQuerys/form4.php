@@ -8,7 +8,7 @@
 
 
 
-    $url = "localhost";
+    $url = $_SERVER['SERVER_ADDR'];
     $usuarioBD = "root";
     $contraBD = "toor";
     $nomBD = "webdb";

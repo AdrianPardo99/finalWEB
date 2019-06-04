@@ -10,10 +10,15 @@ $res = mysqli_query($conexion, $query);
     <table width=\"100%\" class=\"col s12 m12 l12\">
       <thead>
         <th width=\"33%\"><center></center></th>
-        <th width=\"33%\"><center>Descripción:</center></th>
+        <th width=\"33%\"><center></center></th>
         <th width=\"33%\"><center></center></th>
       </thead>
-      <tbody>";
+      <tbody>
+        <tr>
+          <th width=\"33%\"><center></center></th>
+          <th width=\"33%\"><center>Descripción:</center></th>
+          <th width=\"33%\"><center></center></th>
+        </tr>";
       while($fila=mysqli_fetch_array($res)){
         $varHTML=$varHTML."<tr>
           <td width=\"33%\"><center></center></td>

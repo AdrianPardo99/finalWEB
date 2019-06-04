@@ -134,10 +134,6 @@
           M.toast({html: 'Las contraseñas no son iguales', classes: 'rounded'});
             return false;
         }
-        if (!correo.test(email)){
-            M.toast({html: 'El correo tiene un formato equivocado', classes: 'rounded'});
-            return false;
-        }
 
        $.ajax({
                 method:"post",

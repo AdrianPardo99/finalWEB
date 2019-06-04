@@ -11,7 +11,7 @@
     $ano = trim($_POST["year"]);
     $hora = trim($_POST["hours"]);
 
-	$url = "localhost";
+	$url = $_SERVER['SERVER_ADDR'];
     $usuarioBD = "root";
     $contraBD = "toor";
     $nomBD = "webdb";

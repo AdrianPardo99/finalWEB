@@ -3,7 +3,7 @@
     $user = trim($_POST["user"]);
     $pass = trim($_POST["pass"]);
     $crypt = hash('sha256',$pass);
-    $url = "localhost";
+    $url = $_SERVER['SERVER_ADDR'];
     $usuarioBD = "root";
     $contraBD = "toor";
     $nomBD = "webdb";
@@ -28,7 +28,6 @@
             $arreglo["mensaje"]="Bienvenido";
             $_SESSION["ok"]=1;
             $_SESSION["user"]=$user;
-            header("location:/projectWeb/onSession/");
         }
     }
 

@@ -9,9 +9,7 @@
     $pais = trim($_POST["state"]);
     $ano = trim($_POST["year"]);
     $horas = trim($_POST["hours"]);
-
-
-    $url = "localhost";
+    $url = $_SERVER['SERVER_ADDR'];
     $usuarioBD = "root";
     $contraBD = "toor";
     $nomBD = "webdb";

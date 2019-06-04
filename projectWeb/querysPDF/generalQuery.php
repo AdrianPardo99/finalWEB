@@ -8,12 +8,12 @@ $fila = mysqli_fetch_array($res, MYSQLI_BOTH);
 $varHTML=$varHTML."
 <div class=\"col s12 m12 l12\">
 <table width=\"100%\" class=\"col s12 m12 l12\">
-  <thead>
-    <th width=\"33%\"><center>Apellido Paterno</center></th>
-    <th width=\"33%\"><center>Apellido Materno:</center></th>
-    <th width=\"33%\"><center>Nombre(s):</center></th>
-  </thead>
   <tbody>
+    <tr>
+      <th width=\"33%\"><center>Apellido Paterno:</center></th>
+      <th width=\"33%\"><center>Apellido Materno:</center></th>
+      <th width=\"33%\"><center>Nombre(s):</center></th>
+    </tr>
     <tr>
       <td width=\"33%\"><center>".$fila[1]."</center></td>
       <td width=\"33%\"><center>".$fila[2]."</center></td>
@@ -26,12 +26,12 @@ $varHTML=$varHTML."
 $varHTML=$varHTML."
 <div class=\"col s12 m12 l12\">
 <table width=\"100%\" class=\"col s12 m12 l12\">
-  <thead>
-    <th width=\"33%\"><center>Edad:</center></th>
-    <th width=\"33%\"><center>Fecha de nacimiento:</center></th>
-    <th width=\"33%\"><center>Puesto en la institución:</center></th>
-  </thead>
   <tbody>
+    <tr>
+      <th width=\"33%\"><center>Edad:</center></th>
+      <th width=\"33%\"><center>Fecha de nacimiento:</center></th>
+      <th width=\"33%\"><center>Puesto en la institución:</center></th>
+    </tr>
     <tr>
       <td width=\"33%\"><center>".$fila[4]."</center></td>
       <td width=\"33%\"><center>".$fila[5]."</center></td>

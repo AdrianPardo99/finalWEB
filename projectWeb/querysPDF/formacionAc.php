@@ -13,13 +13,20 @@ $res = mysqli_query($conexion, $query);
     <p>Formación Academica:</p>
     <table border=\"1\" width=\"100%\" class=\"col s12 m12 l12\">
       <thead>
-        <th width=\"20%\"><center>Nivel:</center></th>
-        <th width=\"20%\"><center>Nombre (especialidad):</center></th>
-        <th width=\"20%\"><center>Institución y País:</center></th>
-        <th width=\"20%\"><center>Año de obtención:</center></th>
-        <th width=\"20%\"><center>Cedula profesiona:</center></th>
+        <th width=\"20%\"><center></center></th>
+        <th width=\"20%\"><center></center></th>
+        <th width=\"20%\"><center></center></th>
+        <th width=\"20%\"><center></center></th>
+        <th width=\"20%\"><center></center></th>
       </thead>
-      <tbody>";
+      <tbody>
+        <tr>
+          <th width=\"20%\"><center>Nivel:</center></th>
+          <th width=\"20%\"><center>Nombre (especialidad):</center></th>
+          <th width=\"20%\"><center>Institución y País:</center></th>
+          <th width=\"20%\"><center>Año de obtención:</center></th>
+          <th width=\"20%\"><center>Cedula profesiona:</center></th>
+        </tr>";
         while($fila = mysqli_fetch_array($res)){
           $varHTML=$varHTML."<tr>
           <td width=\"20%\"><center>".$fila[1]."</center></td>

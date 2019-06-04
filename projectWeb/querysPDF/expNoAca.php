@@ -10,12 +10,18 @@ $res = mysqli_query($conexion, $query);
     <p>Experiencia no académica: </p>
     <table border=\"1\" width=\"100%\" class=\"col s12 m12 l12\">
       <thead>
-        <th width=\"25%\"><center>Actividad o Puesto:</center></th>
-        <th width=\"25%\"><center>Organización:</center></th>
-        <th width=\"25%\"><center>De:</center></th>
-        <th width=\"25%\"><center>A:</center></th>
+        <th width=\"25%\"><center></center></th>
+        <th width=\"25%\"><center></center></th>
+        <th width=\"25%\"><center></center></th>
+        <th width=\"25%\"><center></center></th>
       </thead>
-      <tbody>";
+      <tbody>
+        <tr>
+          <th width=\"25%\"><center>Actividad o Puesto:</center></th>
+          <th width=\"25%\"><center>Organización:</center></th>
+          <th width=\"25%\"><center>De:</center></th>
+          <th width=\"25%\"><center>A:</center></th>
+        </tr>";
       while($fila=mysqli_fetch_array($res)){
         $varHTML=$varHTML."<tr>
           <td width=\"25%\"><center>".$fila[1]."</center></td>

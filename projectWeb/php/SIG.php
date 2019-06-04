@@ -8,7 +8,7 @@
     $puesto = trim($_POST["puesto"]);
     $pass = trim($_POST["pass1"]);//cifrar
     $mail = trim($_POST["correo"]);
-    $url = "localhost";
+    $url = $_SERVER['SERVER_ADDR'];
     $usuarioBD = "root";
     $contraBD = "toor";
     $nomBD = "webdb";

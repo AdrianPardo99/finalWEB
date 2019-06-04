@@ -10,7 +10,7 @@
     $ah = trim($_POST["a"]);
 
 
-    $url = "localhost";
+    $url = $_SERVER['SERVER_ADDR'];
     $usuarioBD = "root";
     $contraBD = "toor";
     $nomBD = "webdb";
@@ -22,7 +22,7 @@
     if (mysqli_connect_errno($conexion)){
         $arreglo["resultado"] = 0;
         $arreglo["mensaje"] = "NO se logro la conexion";
-    }else{     
+    }else{
         mysqli_query($conexion,"set names 'utf8'");
         $sql = "SELECT * FROM institucion WHERE institucion = '$ins' ;";
         $res = mysqli_query($conexion, $sql);

@@ -3,9 +3,33 @@ include '../php/headerSession.php';
 $var = "onsession";
 include '../php/onsesionfilenav.php';
 session_start();
-if($_SESSION["ok"] == 1){?>
+if($_SESSION["ok"] == 1){
+  $url = $_SERVER['SERVER_ADDR'];
+  $usuarioBD = "root";
+  $contraBD = "toor";
+  $nomBD = "webdb";
+  $user = $_SESSION["user"];
+  $conexion = mysqli_connect($url,$usuarioBD,$contraBD,$nomBD);
+  mysqli_query($conexion,"set names 'utf8'");
+
+  $arreglo = array();
+
+  if (mysqli_connect_errno($conexion)){
+    $arreglo["resultado"] = 0;
+    $arreglo["mensaje"] = "NO se logro la conexion";
+    header("location:/projectWeb/");
+  }else{
+    $sql = "SELECT * FROM usuario WHERE user = '$user' ;";
+    $res = mysqli_query($conexion, $sql);
+    $idproUsr = mysqli_fetch_array($res, MYSQLI_BOTH);
+    $sql= "select*from profesor where idprofesor=".$idproUsr[1].";";
+    $res = mysqli_query($conexion, $sql);
+    $list= mysqli_fetch_array($res, MYSQLI_BOTH);
+  }?>
 <div class="row">
   <div class="col s12 m12 l12">
+    <center><h4><?php echo "Bienvenido: ".$list[1]." ".$list[2]." ".$list[3];?></h4></center>
+    <br>
     <div class="col s2 m2 l4"></div>
     <div class="col s8 m8 l4">
       <div class="card black darken-1">
