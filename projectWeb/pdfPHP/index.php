@@ -1,7 +1,7 @@
 <?php
 session_start();
 if($_SESSION["ok"] == 1){
-$url = "localhost";
+$url = $_SERVER['SERVER_ADDR'];
 $usuarioBD = "root";
 $contraBD = "toor";
 $nomBD = "webdb";
@@ -23,24 +23,26 @@ $varHTML="<!DOCTYPE html>
 <html lang=\"es\" dir=\"ltr\">
   <head>
     <meta charset=\"utf-8\">
-    <link rel=\"stylesheet\" type=\"text/css\" href=\"/projectWeb/css/materialize.css\">
     <link rel=\"stylesheet\" type=\"text/css\" href=\"/projectWeb/css/my2.css\">
-    <link href=\"/projectWeb/css/all.css\" rel=\"stylesheet\">
-    <script type = \"text/javascript\" src = \"/projectWeb/js/jquery-3.4.1.min.js\"></script>
-    <script type = \"text/javascript\" src=\"/projectWeb/js/materialize.js\"></script>
-    <script type = \"text/javascript\" src=\"/projectWeb/js/myJS.js\"></script>
-    <title>PDF</title>
+    <title>PDF".$user."</title>
   </head>
   <body>
   <div class=\"row\">
     <div class=\"col s12 m12 l12\">
-        <div >
-        </div>
-        <div >
-          <center><p>Formato de CASEI (CV)</p></center>
-        </div>
-        <div class=\"col s4 l4 m4\">
-        </div>
+      <table width=\"100%\">
+        <thead>
+          <th width=\"33%\"><center></center></th>
+          <th width=\"33%\"><center></center></th>
+          <th width=\"33%\"><center></center></th>
+        </thead>
+        <tbody>
+          <tr>
+            <th width=\"33%\"><center></center></th>
+            <th width=\"33%\"><center><p>Formato de CASEI (CV)</p></center></th>
+            <th width=\"33%\"><center></center></th>
+          </tr>
+        </tbody>
+      </table>
         <br>
     </div>";
 
@@ -59,7 +61,6 @@ include '../querysPDF/PEfile.php';
     $varHTML=$varHTML."</div>
     </body>
     </html>";
-echo file_put_contents($user."pdfFile.html",$varHTML);
 }
 }else{
   header("location:/projectWeb/php/login.php");
